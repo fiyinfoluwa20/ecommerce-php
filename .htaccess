@@ -1,0 +1,33 @@
+<IfModule mod_rewrite.c>
+	<Files .htaccess>
+		Order deny,allow
+		Deny from all
+	</Files>
+	<FilesMatch "^\.">
+		Order deny,allow
+		Deny from all
+	</FilesMatch>
+
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+    
+    <IfModule mod_headers.c>
+	  Header set X-XSS-Protection "1; mode=block"
+	</IfModule>
+
+    RewriteEngine On
+
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+	AddDefaultCharset UTF-8
+	RewriteBase /eccom/
+	
+	ErrorDocument 403 403
+	ErrorDocument 500 500
+	ErrorDocument 404 404
+
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^([^\.]+)$ $1.php [NC,L]
+</IfModule>
