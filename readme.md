@@ -9,6 +9,3 @@ visit swiftmailer website if there is any error.
 To connect to your database go to the app/define.php file and then configure it
 
 import the sql file.
-# eccom
-# ecommerce
-# ecommerce
