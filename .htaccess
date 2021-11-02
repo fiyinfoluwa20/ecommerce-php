@@ -21,7 +21,7 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 	AddDefaultCharset UTF-8
-	RewriteBase /eccom/
+	RewriteBase /ecommerce-php/
 	
 	ErrorDocument 403 403
 	ErrorDocument 500 500
